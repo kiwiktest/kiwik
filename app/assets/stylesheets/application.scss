@@ -1,0 +1,24 @@
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "toastr";
+
+.menuspace {
+  padding-top: 60px;
+}
+
+.avatar_small {
+  width: 20px;
+}
+
+.avatar_medium {
+  width: 48px;
+}
+
+.avatar_large {
+  width: 68px;
+}
+
+.avatar_small {
+  width: 100%;
+}
