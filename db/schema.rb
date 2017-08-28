@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170814030856) do
+ActiveRecord::Schema.define(version: 20170818014547) do
 
   create_table "items", force: :cascade do |t|
     t.string "categorie"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20170814030856) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -34,6 +36,35 @@ ActiveRecord::Schema.define(version: 20170814030856) do
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.index ["item_id"], name: "index_photos_on_item_id"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "item_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "price"
+    t.integer "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_reservations_on_item_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "comment"
+    t.integer "star", default: 0
+    t.integer "item_id"
+    t.integer "reservation_id"
+    t.integer "renter_id"
+    t.integer "owner_id"
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_reviews_on_item_id"
+    t.index ["owner_id"], name: "index_reviews_on_owner_id"
+    t.index ["renter_id"], name: "index_reviews_on_renter_id"
+    t.index ["reservation_id"], name: "index_reviews_on_reservation_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -29,7 +29,7 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
 
-  config.action_mailer.perform_caching = false
+  config.action_mailer.perform_caching = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -62,15 +62,5 @@ Rails.application.configure do
     password: 'b3528e3f91ec00530218b742d7a15fff'
   }
 
-  config.paperclip_defaults = {
-  storage: :s3,
-  path: ':class/:attachment/:id/:style/:filename',
-  s3_host_name: 's3-ca-central-1.amazonaws.com',
-  s3_credentials: {
-  bucket: 'kiwiksport',
-  access_key_id: 'AKIAIAST5VSAWVSRLVGA',
-  secret_access_key: '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',
-  s3_region: 'ca-central-1'
-    }
-  }
+
 end

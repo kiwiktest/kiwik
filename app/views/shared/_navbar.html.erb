@@ -8,10 +8,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">KiWiK</a>
+      <%= link_to "KiWiKsport", root_path, class: "navbar-brand" %>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
+        <li>
+          <button class="btn btn-form btn-small">
+            <%= link_to "publiez votre annonce", new_item_path, style: "color: white; text-decoration: none;" %>
+          </button>
+        </li>
+
         <% if (!user_signed_in?) %>
           <li><%= link_to "Se Connecter", new_user_session_path %></li>
           <li><%= link_to "S'inscrire", new_user_registration_path %></li>
@@ -26,10 +32,9 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="#">Gérez vos annonces</a></li>
-              <li><a href="#">Mettre un article à louer</a></li>
-              <li><a href="#">Vos articles loués</a></li>
-              <li><a href="#">Vos locations</a></li>
+              <li><%= link_to "Gérez vos annonces", items_path %></li>
+                <li><%= link_to "Annoncez votre article", new_item_path %></li>
+                <li><%= link_to "Vos réservations", your_reservations_path %></li>
 
               <li role="separator" class="divider"></li>
               <li><%= link_to "Modifier le profil", edit_user_registration_path %></li>

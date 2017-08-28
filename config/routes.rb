@@ -13,8 +13,16 @@ root 'pages#home'
       get 'description'
       get 'photo_upload'
       get 'location'
+      get 'preload'
+      get 'preview'
     end
     resources :photos, only: [:create, :destroy]
     resources :reservations, only: [:create]
   end
+
+  resources :renter_reviews, only: [:create, :destroy]
+  resources :owner_reviews, only: [:create, :destroy]
+
+  get '/your_trips' => 'reservations#your_trips'
+  get '/your_reservations' => 'reservations#your_reservations'
 end
